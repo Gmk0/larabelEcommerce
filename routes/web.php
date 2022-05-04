@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
-
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\categoryController;
+use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\SliderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +28,18 @@ Route::get('/client_login',[ClientController::class,'client_login']);
 Route::get('/cart',[ClientController::class,'cart']);
 Route::get('/signup',[ClientController::class,'signup']);
 Route::get('/checkout',[ClientController::class,'checkout']);
+
+Route::get('/admin',[AdminController::class,'dashboard']);
+Route::get('/commandes',[AdminController::class,'commandes']);
+
+Route::get('/ajoutCategorie',[categoryController::class,'ajoutCategorie']);
+Route::get('/showAllCategorie',[categoryController::class,'showAllCategorie']);
+Route::post('/saveCategorie',[categoryController::class,'saveCategorie']);
+
+Route::get('/ajoutProduit',[ProduitController::class,'ajoutProduit']);
+Route::get('/produitShowAll',[ProduitController::class,'ProduitShowAll']);
+Route::post('/saveProduit',[ProduitController::class,'saveProduit']);
+
+Route::get('/ajoutSlider',[SliderController::class,'ajoutSlider']);
+Route::get('/showAllSlider',[SliderController::class,'showAllSlider']);
+Route::post('/saveSlider',[SliderController::class,'saveProduit']);
