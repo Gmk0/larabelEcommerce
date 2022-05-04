@@ -19,3 +19,9 @@ use App\Http\Controllers\ClientController;
 });*/
 
 Route::get('/',[ClientController::class,'home']);
+
+Route::get('/shop',[ClientController::class,'shop']);
+Route::get('/client_login',[ClientController::class,'client_login']);
+Route::get('/cart',[ClientController::class,'cart']);
+Route::get('/signup',[ClientController::class,'signup']);
+Route::get('/checkout',[ClientController::class,'checkout']);
