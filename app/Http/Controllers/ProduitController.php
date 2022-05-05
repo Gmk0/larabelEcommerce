@@ -16,7 +16,9 @@ class ProduitController extends Controller
 
     }
     public function ProduitShowAll(){
-        return view('admin.produitShowAll');
+
+        $Product = Product::get();
+        return view('admin.produitShowAll')->with('Product',$Product);
     }
 
        public function saveProduit(Request $request){
@@ -51,5 +53,14 @@ class ProduitController extends Controller
         $product->save();
         return redirect('/ajoutProduit')->with('status','le produit a ete bien ajouter ');
         
+    }
+
+
+        public function edit_produit($id){
+
+        $Product = Product::find($id);
+        $categorie = Category::All()->pluck('category_name','category_name');
+        return view('admin.editProduit')->with('Product',$Product)->with('categorie',$categorie);
+
     }
 }

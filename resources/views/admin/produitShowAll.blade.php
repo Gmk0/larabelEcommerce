@@ -6,7 +6,7 @@
 @section('contenu')
 
  <!-- partial -->
-      
+      {{Form::hidden('',$increment =1)}}
 
 
 
@@ -29,21 +29,28 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2012/08/03</td>
-                            <td>tomate</td>
-                            <td>legume</td>
-                            <td>500</td>
+                        @foreach ($Product as $product)
+                         <tr>
+                            <td>{{$increment}}</td>
+                            <td><img src="/storage/product_images/{{$product->product_image}}" alt=""></td>
+                            <td>{{$product->product_name}}</td>
+                            <td>{{$product->product_category}}</td>
+                            <td>{{$product->product_price}}</td>
                             <td>
-                              <label class="badge badge-info">On hold</label>
+                              @if($product->status==1)
+                                  <label class="badge badge-info">Activer</label>
+                                 @else
+                                  <label class="badge badge-desactiver">Desactiver </label>   
+                              @endif
+                            
                             </td>
                             <td>
-                              <button class="btn btn-outline-primary">Edit</button>
-                              <button class="btn btn-outline-danger">Delete</button>
+                              <a href="{{URL::to('/edit_produit/'.$product->id)}}" class="btn btn-outline-primary">Edit</a>
+                              <a href="{{URL::to('/delete_produit/'.$product->id)}}" id="delete" class="btn btn-outline-danger">Delete</a>
                             </td>
                         </tr>
-                       
+                          {{Form::hidden('',$increment =$increment+1)}}
+                        @endforeach 
                       </tbody>
                     </table>
                   </div>
