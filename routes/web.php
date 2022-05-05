@@ -42,6 +42,7 @@ Route::post('/updateCategory',[categoryController::class,'updateCategory']);
 Route::get('/ajoutProduit',[ProduitController::class,'ajoutProduit']);
 Route::get('/produitShowAll',[ProduitController::class,'ProduitShowAll']);
 Route::post('/saveProduit',[ProduitController::class,'saveProduit']);
+Route::post('/updateProduit',[ProduitController::class,'updateProduit']);
 Route::get('/edit_produit/{id}',[ProduitController::class,'edit_produit']);
 
 Route::get('/ajoutSlider',[SliderController::class,'ajoutSlider']);

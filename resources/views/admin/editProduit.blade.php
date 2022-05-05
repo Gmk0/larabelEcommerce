@@ -40,7 +40,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">AJOUT PRODUIT</h4>
-                  <form class="cmxform" id="commentForm" method="POST" action="{{URL::to('/saveProduit')}}" enctype="multipart/form-data">
+                  <form class="cmxform" id="commentForm" method="POST" action="{{URL::to('/updateProduit')}}" enctype="multipart/form-data">
                     <fieldset>
                       {{ csrf_field() }}
                       <div class="form-group">
@@ -79,7 +79,7 @@
                         <label for="ccomment">Your comment (required)</label>
                         <textarea id="ccomment" class="form-control" name="comment" required></textarea>
                       </div> --}}
-                      
+                      <input  name="id" type="hidden" value="{{$Product->id}}" >
                       <input class="btn btn-primary " type="submit" value="MODIFIER">
                     <a href="{{URL::to('/produitShowAll')}}" class="btn btn-warning">Retour</a>
                     </fieldset>

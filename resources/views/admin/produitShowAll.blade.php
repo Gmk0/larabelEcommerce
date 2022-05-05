@@ -9,7 +9,17 @@
       {{Form::hidden('',$increment =1)}}
 
 
-
+       @if (Session::has('status'))
+                      <div class="alert alert-success" role="alert" >
+                             <button type="button" class="close primary" data-dismiss="alert" aria-label="close">
+                              <span aria-label="true">&times;</span>
+                      </button>
+                              <p> {{Session::get('status')}}</p>
+                           {{---Session::put('message',null)---}}
+                       </div>
+                    
+                      
+                  @endif
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Data table</h4>
