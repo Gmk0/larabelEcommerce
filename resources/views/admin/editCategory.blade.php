@@ -6,12 +6,12 @@
 
 @section('contenu')
 
-
-
-
        <div class="row grid-margin">
             <div class="col-lg-12">
-               @if (Session::has('status'))
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">AJOUT CATEGORIE</h4>
+                  @if (Session::has('status'))
                       <div class="alert alert-success" role="alert" >
                              <button type="button" class="close primary" data-dismiss="alert" aria-label="close">
                               <span aria-label="true">&times;</span>
@@ -22,7 +22,7 @@
                     
                       
                   @endif
-                  @if (count($errors)>0)
+                   @if (count($errors)>0)
                        <div class="alert alert-danger" role="alert" >
                              <button type="button" class="close btn-primary" data-dismiss="alert" aria-label="close">
                               <span aria-label="true">&times;</span>
@@ -37,37 +37,15 @@
                        
                       
                   @endif
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">AJOUT PRODUIT</h4>
-                  <form class="cmxform" id="commentForm" method="POST" action="{{URL::to('/saveProduit')}}" enctype="multipart/form-data">
+                  <form class="cmxform" id="commentForm" method="POST" action="{{URL::to('/updateCategory')}}">
                     <fieldset>
                       {{ csrf_field() }}
                       <div class="form-group">
-                        <label for="cname"> PRODUCT NAME </label>
-                        <input id="cname" class="form-control" name="product_name" minlength="2" type="text" required>
+                        <label for="cname">Name </label>
+                        <input id="cname" class="form-control" name="category_name" minlength="2" type="text" value="{{$categorie->category_name}}" required>
                       </div>
-                      <div class="form-group">
-                        <label for="cnumber"> PRODUCT PRICE </label>
-                        <input id="cnumber" class="form-control" name="product_price" minlength="" type="number" required>
-                      </div>
-
-                        <div class="form-group">
-                          {{Form::label('','categorie du produit')}}
-                          {{Form::select('product_category',$categorie,null,
-                           ['placeholder'=>'select category','class'=>'form-control'])}}
-                        </div>
-                           <div class="form-group">
-                        <label for="image"> IMAGE </label>
-                        <input id="image" class="form-control" name="product_image" minlength="" type="file" >
-                      </div>
-
-                      
                       {{-- 
                       <div class="form-group">
-                        @foreach ($categorie as $categori)
-                              <option value="{{$categori}}">{{$categori}}</option>  
-                            @endforeach
                         <label for="cemail">E-Mail (required)</label>
                         <input id="cemail" class="form-control" type="email" name="email" required>
                       </div>
@@ -79,9 +57,9 @@
                         <label for="ccomment">Your comment (required)</label>
                         <textarea id="ccomment" class="form-control" name="comment" required></textarea>
                       </div> --}}
-                      
-                      <input class="btn btn-primary " type="submit" value="Submit">
-                   
+                      <input class="btn btn-primary" type="submit" value="Submit">
+                        <input name="id" type="hidden" value="{{$categorie->id}}">
+                      <a href="{{URL::to('/showAllCategorie')}}" class="btn btn-warning">Retour</a>
                     </fieldset>
                   </form>
                 </div>
@@ -89,10 +67,6 @@
             </div>
           </div>
 
-
-
- 
-    
 @endsection
 
 @section('script')

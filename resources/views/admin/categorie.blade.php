@@ -5,14 +5,26 @@
 
 @section('contenu')
 
- 
+    @if (Session::has('status'))
+                      <div class="alert alert-success" role="alert" >
+                             <button type="button" class="close primary" data-dismiss="alert" aria-label="close">
+                              <span aria-label="true">&times;</span>
+                      </button>
+                              <p> {{Session::get('status')}}</p>
+                           {{---Session::put('message',null)---}}
+                       </div>
+                    
+                      
+                  @endif
 
+             <input type="hidden" value="{{$increment=1}}">           
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Data table</h4>
               <div class="row">
                 <div class="col-12">
                   <div class="table-responsive">
+                  
                     <table id="order-listing" class="table">
                       <thead>
                         <tr>
@@ -24,18 +36,21 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2012/08/03</td>
-                            
+                        @foreach ($categorie as $categorie)
+                          <tr>
+                            <td>{{$increment}}</td>
+                            <td>{{$categorie->category_name}}</td>                            
                             <td>
                               <label class="badge badge-info">On hold</label>
                             </td>
                             <td>
-                                <button class="btn btn-outline-primary">Edit</button>
-                              <button class="btn btn-outline-danger">Delete</button>
+                                <a href="{{URL::to('/edit_category/'.$categorie->id)}}"class="btn btn-outline-primary">Edit</a>
+                              <a href="{{URL::to('/delete_category/'.$categorie->id)}}" class="btn btn-outline-danger" id="delete">Delete</a>
                             </td>
                         </tr>
+                           <input type="hidden" value="{{$increment=$increment+1}}"> 
+                        @endforeach
+                        
                        
                       </tbody>
                     </table>
@@ -51,3 +66,9 @@
     @section('script')
     <script src="backend/js/data-table.js"></script>
      @endsection
+
+
+
+     <!-- Button trigger modal -->
+    
+     

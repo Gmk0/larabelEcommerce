@@ -35,6 +35,9 @@ Route::get('/commandes',[AdminController::class,'commandes']);
 Route::get('/ajoutCategorie',[categoryController::class,'ajoutCategorie']);
 Route::get('/showAllCategorie',[categoryController::class,'showAllCategorie']);
 Route::post('/saveCategorie',[categoryController::class,'saveCategorie']);
+Route::get('/edit_category/{id}',[categoryController::class,'editCategory']);
+Route::get('/delete_category/{id}',[categoryController::class,'deleteCategory']);
+Route::post('/updateCategory',[categoryController::class,'updateCategory']);
 
 Route::get('/ajoutProduit',[ProduitController::class,'ajoutProduit']);
 Route::get('/produitShowAll',[ProduitController::class,'ProduitShowAll']);
@@ -42,4 +45,4 @@ Route::post('/saveProduit',[ProduitController::class,'saveProduit']);
 
 Route::get('/ajoutSlider',[SliderController::class,'ajoutSlider']);
 Route::get('/showAllSlider',[SliderController::class,'showAllSlider']);
-Route::post('/saveSlider',[SliderController::class,'saveProduit']);
+Route::post('/saveSlider',[SliderController::class,'saveSlider']);

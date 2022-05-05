@@ -12,12 +12,38 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">AJOUT CATEGORIE</h4>
+                  @if (Session::has('status'))
+                      <div class="alert alert-success" role="alert" >
+                             <button type="button" class="close primary" data-dismiss="alert" aria-label="close">
+                              <span aria-label="true">&times;</span>
+                      </button>
+                              <p> {{Session::get('status')}}</p>
+                           {{---Session::put('message',null)---}}
+                       </div>
+                    
+                      
+                  @endif
+                  @if (count($errors)>0)
+                       <div class="alert alert-danger" role="alert" >
+                             <button type="button" class="close btn-primary" data-dismiss="alert" aria-label="close">
+                              <span aria-label="true">&times;</span>
+                      </button>
+                              <ul>
+                                @foreach ($errors->all() as $error)
+                                   <li>{{$error}}</li> 
+                                @endforeach
+                              </ul>
+                           {{---Session::put('message',null)---}}
+                       </div>
+                       
+                      
+                  @endif
                   <form class="cmxform" id="commentForm" method="POST" action="{{URL::to('/saveCategorie')}}">
                     <fieldset>
-                      
+                      {{ csrf_field() }}
                       <div class="form-group">
                         <label for="cname">Name (required, at least 2 characters)</label>
-                        <input id="cname" class="form-control" name="name" minlength="2" type="text" required>
+                        <input id="cname" class="form-control" name="category_name" minlength="2" type="text" required>
                       </div>
                       {{-- 
                       <div class="form-group">
