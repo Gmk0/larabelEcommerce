@@ -48,15 +48,20 @@
                             <td>{{$product->product_price}}</td>
                             <td>
                               @if($product->status==1)
-                                  <label class="badge badge-info">Activer</label>
+                                  <label class="badge badge-success">Activer</label>
                                  @else
-                                  <label class="badge badge-desactiver">Desactiver </label>   
+                                  <label class="badge badge-danger">Desactiver </label>   
                               @endif
                             
                             </td>
                             <td>
                               <a href="{{URL::to('/edit_produit/'.$product->id)}}" class="btn btn-outline-primary">Edit</a>
                               <a href="{{URL::to('/delete_produit/'.$product->id)}}" id="delete" class="btn btn-outline-danger">Delete</a>
+                              @if ($product->status==1)
+                                 <a href="{{URL::to('/desactiver_produit/'.$product->id)}}" id="" class="btn btn-outline-warning">Desactiver</a> 
+                                @else
+                                  <a href="{{URL::to('/activer_produit/'.$product->id)}}" id="" class="btn btn-outline-success">Activer</a> 
+                              @endif
                             </td>
                         </tr>
                           {{Form::hidden('',$increment =$increment+1)}}

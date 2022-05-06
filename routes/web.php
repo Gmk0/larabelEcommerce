@@ -44,6 +44,9 @@ Route::get('/produitShowAll',[ProduitController::class,'ProduitShowAll']);
 Route::post('/saveProduit',[ProduitController::class,'saveProduit']);
 Route::post('/updateProduit',[ProduitController::class,'updateProduit']);
 Route::get('/edit_produit/{id}',[ProduitController::class,'edit_produit']);
+Route::get('/delete_produit/{id}',[ProduitController::class,'delete_produit']);
+Route::get('/activer_produit/{id}',[ProduitController::class,'activer_produit']);
+Route::get('/desactiver_produit/{id}',[ProduitController::class,'desactiver_produit']);
 
 Route::get('/ajoutSlider',[SliderController::class,'ajoutSlider']);
 Route::get('/showAllSlider',[SliderController::class,'showAllSlider']);

@@ -98,4 +98,30 @@ class ProduitController extends Controller
          return redirect('/produitShowAll')->with('status','le produit a ete bien modifier');
 
     }
+
+    public function delete_produit($id){
+        $product = Product::find($id);
+
+         if($product ->product_image != 'noimage.jpg')
+            {
+                \Storage::delete('public/product_images/'.$product->product_image);
+            }
+      
+        $product->delete();
+        return redirect('/produitShowAll')->with('status','Le produit  a ete bien effacer');
+    }
+
+      public function activer_produit($id){
+        $product = Product::find($id);
+        $product->status=1;        
+        $product->update();
+        return redirect('/produitShowAll');
+    }
+       public function desactiver_produit($id){
+        $product = Product::find($id);
+        $product->status=0;        
+        $product->update();
+        return redirect('/produitShowAll');
+    }
+   
 }
