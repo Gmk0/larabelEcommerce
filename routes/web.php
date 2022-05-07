@@ -51,3 +51,8 @@ Route::get('/desactiver_produit/{id}',[ProduitController::class,'desactiver_prod
 Route::get('/ajoutSlider',[SliderController::class,'ajoutSlider']);
 Route::get('/showAllSlider',[SliderController::class,'showAllSlider']);
 Route::post('/saveSlider',[SliderController::class,'saveSlider']);
+Route::post('/updateSlider',[SliderController::class,'updateSlider']);
+Route::get('/edit_slider/{id}',[SliderController::class,'edit_slider']);
+Route::get('/delete_slider/{id}',[SliderController::class,'delete_slider']);
+Route::get('/activer_slider/{id}',[SliderController::class,'activer_slider']);
+Route::get('/desactiver_slider/{id}',[SliderController::class,'desactiver_slider']);

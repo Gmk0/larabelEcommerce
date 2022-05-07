@@ -5,11 +5,10 @@
 
 @section('contenu')
 
+  {{Form::hidden('',$increment =1)}}
+
  <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-
-
+    
 
           <div class="card">
             <div class="card-body">
@@ -21,7 +20,7 @@
                       <thead>
                         <tr>
                             <th>Order #</th>
-                            
+                            <th>image </th>
                             <th>Description </th>
                             <th>Description </th>
                             
@@ -30,20 +29,30 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2012/08/03</td>
-                            <td>tomate</td>
-                            
+                        @foreach ($slider as $slider)
+                            <tr>
+                            <td>{{$increment}}</td>
+                            <td> <img src="/Storage/slider_images/{{$slider->slider_image}}" alt=""></td>
+                            <td>{{$slider->description_one}}</td>
+                            <td>{{$slider->description_two}}</td>
+                            @if ($slider->status==1)
+                              <td><label class="badge badge-success">Activer</label></td>
+                              @else
+                                <td><label class="badge badge-warning">Desactiver</label></td>
+                            @endif
                             <td>
-                              <label class="badge badge-info">On hold</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">Edit</button>
-                              <button class="btn btn-outline-danger">Delete</button>
+                              <a href="{{URL::to('/edit_slider/'.$slider->id)}}" class="btn btn-outline-primary">Edit</a>
+                              <a href="{{URL::to('/delete_slider/'.$slider->id)}}" id="delete" class="btn btn-outline-danger">Delete</a>
+                              @if ($slider->status==1)
+                                 <a href="{{URL::to('/desactiver_slider/'.$slider->id)}}" id="" class="btn btn-outline-warning">Desactiver</a> 
+                                @else
+                                  <a href="{{URL::to('/activer_slider/'.$slider->id)}}" id="" class="btn btn-outline-success">Activer</a> 
+                              @endif
                             </td>
                         </tr>
-                       
+                        {{Form::hidden('',$increment =$increment+1)}}
+                        @endforeach
+                        
                       </tbody>
                     </table>
                   </div>
@@ -53,7 +62,7 @@
           </div>
 
           
-        </div>
+        
     @endsection
     @section('script')
     <script src="backend/js/data-table.js"></script>

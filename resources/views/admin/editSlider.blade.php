@@ -12,23 +12,23 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">AJOUT SLIDER</h4>
-                  <form class="cmxform" id="commentForm" method="POST" action="{{URL::to('/saveSlider')}}" enctype="multipart/form-data">
+                  <h4 class="card-title">MODIFIER SLIDER</h4>
+                  <form class="cmxform" id="commentForm" method="POST" action="{{URL::to('/updateSlider')}}" enctype="multipart/form-data">
                     <fieldset>
                       {{csrf_field() }}
                       <div class="form-group">
                         <label for="cname">Description one</label>
-                        <input id="cname" class="form-control" name="description_one" minlength="2" type="text" required>
+                        <input id="cname" class="form-control" name="description_one"  type="text" value="{{$slider->description_one}}" required>
                       </div>
                        
                       <div class="form-group">
                         <label for="cname">Description two</label>
-                        <input id="cname" class="form-control" name="description_two" minlength="2" type="text" required>
+                        <input id="cname" class="form-control" name="description_two" type="text" value="{{$slider->description_two}}" required>
                       </div>
                        
                       <div class="form-group">
                         <label for="image">Image</label>
-                        <input id="image" class="form-control" name="slider_image" minlength="" type="file" required>
+                        <input id="image" class="form-control" name="slider_image" minlength="" type="file" value="">
                       </div>
                       {{-- 
                       <div class="form-group">
@@ -43,6 +43,7 @@
                         <label for="ccomment">Your comment (required)</label>
                         <textarea id="ccomment" class="form-control" name="comment" required></textarea>
                       </div> --}}
+                      <input class="btn btn-primary" name="id" type="hidden" value="{{$slider->id}}">
                       <input class="btn btn-primary" type="submit" value="Submit">
                     </fieldset>
                   </form>
