@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Slider;
+use App\Models\Product;
+use App\Models\Category;
 
 class ClientController extends Controller
 {
     //
 
     public function home(){
-        return view('Client.home');
+        $sliders = Slider::where('status', 1)->get();
+        $products = Product::where('status', 1)->get();
+        return view('Client.home')->with('products',$products)->with('sliders',$sliders);
     }
 
     public function cart(){
@@ -17,7 +22,18 @@ class ClientController extends Controller
     }
 
     public function shop(){
-        return view('Client.show');
+         $category = Category::get();
+        $products = Product::where('status', 1)->Paginate(10);
+        return view('Client.show')->with('products',$products)->with('category',$category);
+    
+    }
+
+    
+        public function sele_cat($id){
+         $category = Category::get();
+        $products = Product::where('product_category',$id)->where('status', 1)->Paginate(10);
+        return view('Client.show')->with('products',$products)->with('category',$category);
+    
     }
 
     public function checkout(){

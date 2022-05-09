@@ -28,6 +28,8 @@ Route::get('/client_login',[ClientController::class,'client_login']);
 Route::get('/cart',[ClientController::class,'cart']);
 Route::get('/signup',[ClientController::class,'signup']);
 Route::get('/checkout',[ClientController::class,'checkout']);
+Route::get('/sele_cat/{id}',[ClientController::class,'sele_cat']);
+Route::get('/add_cart/{id}',[ClientController::class,'add_cart']);
 
 Route::get('/admin',[AdminController::class,'dashboard']);
 Route::get('/commandes',[AdminController::class,'commandes']);
@@ -38,6 +40,8 @@ Route::post('/saveCategorie',[categoryController::class,'saveCategorie']);
 Route::get('/edit_category/{id}',[categoryController::class,'editCategory']);
 Route::get('/delete_category/{id}',[categoryController::class,'deleteCategory']);
 Route::post('/updateCategory',[categoryController::class,'updateCategory']);
+
+
 
 Route::get('/ajoutProduit',[ProduitController::class,'ajoutProduit']);
 Route::get('/produitShowAll',[ProduitController::class,'ProduitShowAll']);
