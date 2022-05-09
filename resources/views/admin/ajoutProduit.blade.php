@@ -40,7 +40,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">AJOUT PRODUIT</h4>
-                  <form class="cmxform" id="commentForm" method="POST" action="{{URL::to('/saveProduit')}}" enctype="multipart/form-data">
+                  <form class="cmxform " id="main_form" method="POST" action="{{URL::to('/saveProduit')}}" enctype="multipart/form-data">
                     <fieldset>
                       {{ csrf_field() }}
                       <div class="form-group">

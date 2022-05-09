@@ -30,6 +30,9 @@ Route::get('/signup',[ClientController::class,'signup']);
 Route::get('/checkout',[ClientController::class,'checkout']);
 Route::get('/sele_cat/{id}',[ClientController::class,'sele_cat']);
 Route::get('/add_cart/{id}',[ClientController::class,'add_cart']);
+Route::post('/update_qty/{id}',[ClientController::class,'update_qty']);
+Route::get('/remove_item/{id}',[ClientController::class,'remove_item']);
+
 
 Route::get('/admin',[AdminController::class,'dashboard']);
 Route::get('/commandes',[AdminController::class,'commandes']);

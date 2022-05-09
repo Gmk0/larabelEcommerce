@@ -62,6 +62,7 @@
   <script src="{{asset('backend/js/settings.js')}}"></script>
   <script src="{{asset('backend/js/todolist.js')}}"></script>
   <script src="{{asset('backend/js/bootbox.min.js')}}"></script>
+  <script src="{{asset('backend/js/main.js')}}"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
 
