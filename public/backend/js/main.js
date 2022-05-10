@@ -1,5 +1,5 @@
 $(function () {
-    $("").on("submit", function (e) {
+    $("#main_form").on("submit", function (e) {
         e.preventDefault();
         $.ajax({
             type: "method",

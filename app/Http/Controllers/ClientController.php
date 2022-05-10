@@ -30,6 +30,14 @@ class ClientController extends Controller
         return view('Client.cart',['products'=>$cart->items]);
         
     }
+      public function checkout(){
+          if(!Session::has('cart')){
+            return view('Client.cart');
+        }else{
+                 return view('Client.checkout');
+        };
+       
+    }
 
     public function shop(){
          $category = Category::get();
@@ -85,9 +93,7 @@ class ClientController extends Controller
 
 
 
-    public function checkout(){
-        return view('Client.checkout');
-    }
+  
 
     public function client_login(){
         return view('Client.login');

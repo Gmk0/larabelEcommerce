@@ -120,7 +120,7 @@
     					<hr>
     					<p class="d-flex total-price">
     						<span>Total</span>
-    						<span>$17.60</span>
+    						<span>{{Session::has('cart')? Session::get('cart')->totalPrice:0}}</span>
     					</p>
     				</div>
     				<p><a href="{{URL::to('/checkout')}}" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>

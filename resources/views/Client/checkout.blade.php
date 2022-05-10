@@ -120,7 +120,7 @@
 		    					<hr>
 		    					<p class="d-flex total-price">
 		    						<span>Total</span>
-		    						<span>$17.60</span>
+		    						<span>{{Session::get('cart')->totalPrice}} CDF</span>
 		    					</p>
 								</div>
 	          	</div>

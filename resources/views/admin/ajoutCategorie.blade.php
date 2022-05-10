@@ -38,7 +38,7 @@
                        
                       
                   @endif
-                  <form class="cmxform" id="commentForm" method="POST" action="{{URL::to('/saveCategorie')}}">
+                  <form class="cmxform" id="main_form" method="POST" action="{{URL::to('/saveCategorie')}}">
                     <fieldset>
                       {{ csrf_field() }}
                       <div class="form-group">

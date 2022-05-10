@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+
 class CategoryController extends Controller
 {
     //
@@ -46,6 +47,5 @@ class CategoryController extends Controller
         $categorie->update();
         return redirect('/showAllCategorie')->with('status','La categorie a ete bien modifier');
     }
-
 
 }
