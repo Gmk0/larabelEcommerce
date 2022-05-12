@@ -22,21 +22,7 @@
                     
                       
                   @endif
-                  @if (count($errors)>0)
-                       <div class="alert alert-danger" role="alert" >
-                             <button type="button" class="close btn-primary" data-dismiss="alert" aria-label="close">
-                              <span aria-label="true">&times;</span>
-                      </button>
-                              <ul>
-                                @foreach ($errors->all() as $error)
-                                   <li>{{$error}}</li> 
-                                @endforeach
-                              </ul>
-                           {{---Session::put('message',null)---}}
-                       </div>
-                       
-                      
-                  @endif
+                 
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">AJOUT PRODUIT</h4>

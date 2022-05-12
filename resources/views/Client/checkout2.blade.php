@@ -13,24 +13,7 @@
         </div>
       </div>
     </div>
-			 @if (Session::has('error'))
-                      <div class="alert alert-danger" role="alert" >
-                             <button type="button" class="close primary" data-dismiss="alert" aria-label="close">
-                              <span aria-label="true">&times;</span>
-                      </button>
-                              <p> {{Session::get('error')}}</p>
-                           {{---Session::put('message',null)---}}
-                       </div>
-				@elseif(Session::has('status'))
-                     <div class="alert alert-succes" role="alert" >
-                             <button type="button" class="close primary" data-dismiss="alert" aria-label="close">
-                              <span aria-label="true">&times;</span>
-                      </button>
-                              <p> {{Session::get('status')}}</p>
-                           {{---Session::put('message',null)---}}
-                       </div>
-                      
-                 @endif
+
     <section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
@@ -42,46 +25,81 @@
 	          		<div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="firstname">Firt Name</label>
-	                  <input type="text" class="form-control" placeholder="" id="card-name"name="card-name">
+	                  <input type="text" class="form-control" placeholder="">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
-	                	<label for="lastname">Adresse</label>
-	                  <input type="text" class="form-control" placeholder="" name="adresse">
+	                	<label for="lastname">Last Name</label>
+	                  <input type="text" class="form-control" placeholder="">
 	                </div>
                 </div>
                 <div class="w-100"></div>
-		            
-		           
-					 <div class="col-md-12">
+		            <div class="col-md-12">
 		            	<div class="form-group">
-	                		<label for="towncity">Card Number</label>
-	                  		<input type="text" id="card-number" class="form-control" placeholder="card Number" name="card-number" maxlength="16">
-	                	</div>
+		            		<label for="country">State / Country</label>
+		            		<div class="select-wrap">
+		                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                  <select name="" id="" class="form-control">
+		                  	<option value="">France</option>
+		                    <option value="">Italy</option>
+		                    <option value="">Philippines</option>
+		                    <option value="">South Korea</option>
+		                    <option value="">Hongkong</option>
+		                    <option value="">Japan</option>
+		                  </select>
+		                </div>
+		            	</div>
 		            </div>
-					 <div class="col-md-6">
+		            <div class="w-100"></div>
+		            <div class="col-md-6">
 		            	<div class="form-group">
-	                		<label for="towncity">Expiration Month</label>
-	                  		<input type="text" id="card-expiry-month"  class="form-control"  placeholder="Month" maxlength="3">
-	                	</div>
+	                	<label for="streetaddress">Street Address</label>
+	                  <input type="text" class="form-control" placeholder="House number and street name">
+	                </div>
 		            </div>
-					<div class="col-md-6">
+		            <div class="col-md-6">
 		            	<div class="form-group">
-	                		<label for="towncity">Expiration Year</label>
-	                  		<input type="text" id="card-expiry-year"  class="form-control"   maxlength="4">
-	                	</div>
+	                  <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
+	                </div>
 		            </div>
-					<div class="col-md-6">
+		            <div class="w-100"></div>
+		            <div class="col-md-6">
 		            	<div class="form-group">
-	                		<label for="towncity"> CVV</label>
-	                  		<input type="text"  id="card-cvc" class="form-control" name="card-cvc" placeholder="" maxlength="4">
-	                	</div>
+	                	<label for="towncity">Town / City</label>
+	                  <input type="text" class="form-control" placeholder="">
+	                </div>
 		            </div>
+		            <div class="col-md-6">
+		            	<div class="form-group">
+		            		<label for="postcodezip">Postcode / ZIP *</label>
+	                  <input type="text" class="form-control" placeholder="">
+	                </div>
+		            </div>
+		            <div class="w-100"></div>
+		            <div class="col-md-6">
+	                <div class="form-group">
+	                	<label for="phone">Phone</label>
+	                  <input type="text" class="form-control" placeholder="">
+	                </div>
+	              </div>
+	              <div class="col-md-6">
+	                <div class="form-group">
+	                	<label for="emailaddress">Email Address</label>
+	                  <input type="text" class="form-control" placeholder="">
+	                </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-12">
+                	<div class="form-group mt-4">
+										<div class="radio">
+										  <label class="mr-3"><input type="radio" name="optradio"> Create an Account? </label>
+										  <label><input type="radio" name="optradio"> Ship to different address</label>
+										</div>
+									</div>
+                </div>
 	            </div>
-				<input type="submit" value="Buy Now" class="btn btn-primary py-3 px-4">
-	          </form>
-			  <!-- END -->
+	          </form><!-- END -->
 					</div>
 					<div class="col-xl-5">
 	          <div class="row mt-5 pt-3">

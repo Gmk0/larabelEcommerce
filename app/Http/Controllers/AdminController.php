@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Order;
 
 use Illuminate\Http\Request;
 
@@ -12,6 +13,7 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
      public function commandes(){
-        return view('admin.command');
+         $orders= Order::get();
+        return view('admin.command')->with('orders',$orders);
     }
 }

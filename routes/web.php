@@ -32,6 +32,7 @@ Route::get('/sele_cat/{id}',[ClientController::class,'sele_cat']);
 Route::get('/add_cart/{id}',[ClientController::class,'add_cart']);
 Route::post('/update_qty/{id}',[ClientController::class,'update_qty']);
 Route::get('/remove_item/{id}',[ClientController::class,'remove_item']);
+Route::post('/payement',[ClientController::class,'payement']);
 
 
 Route::get('/admin',[AdminController::class,'dashboard']);

@@ -5,10 +5,6 @@
 
 @section('contenu')
 
- <!-- 
-
-
-
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Data table</h4>
@@ -28,9 +24,12 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach ($orders as $order)
+                            
+                        @endforeach
                         <tr>
-                            <td>1</td>
-                            <td>ben</td>
+                            <td>{{$increment}}</td>
+                            <td>{{$orders->nom }}</td>
                             <td>oshwe</td>
                             <td>legume</td>
                             <td>500fghf</td>
@@ -50,9 +49,6 @@
               </div>
             </div>
           </div>
-
-          
-        
     @endsection
     @section('script')
     <script src="backend/js/data-table.js"></script>

@@ -14,7 +14,16 @@
         </div>
       </div>
     </div>
-
+	@if(Session::has('status'))
+                     <div class="alert alert-succes" role="alert" >
+                             <button type="button" class="close primary" data-dismiss="alert" aria-label="close">
+                              <span aria-label="true">&times;</span>
+                      </button>
+                              <p> {{Session::get('status')}}</p>
+                           {{---Session::put('message',null)---}}
+                       </div>
+                      
+                 @endif
     <section class="ftco-section ftco-cart">
 			<div class="container">
 				<div class="row">
