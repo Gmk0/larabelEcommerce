@@ -5,6 +5,18 @@
 
 @section('contenu')
   {{Form::hidden('',$increment =1)}}
+
+       @if (Session::has('error'))
+                      <div class="alert alert-danger" role="alert" >
+                             <button type="button" class="close primary" data-dismiss="alert" aria-label="close">
+                              <span aria-label="true">&times;</span>
+                      </button>
+                              <p> {{Session::get('error')}}</p>
+                           {{---Session::put('message',null)---}}
+                       </div>
+                    
+                      
+                  @endif
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Data table</h4>
@@ -25,9 +37,7 @@
                       </thead>
                       <tbody>
                         @foreach ($orders as $order)
-                            
-                        @endforeach
-                        <tr>
+                         <tr>
                             <td>{{$increment}}</td>
                             <td>{{$order->nom }}</td>
                             <td>{{$order->adresse }}</td>
@@ -41,9 +51,12 @@
                               <label class="badge badge-info">On hold</label>
                             </td>
                             <td>
-                              <button class="btn btn-outline-primary">Edit</button>
+                              <a href="{{url('/voir_pdf/'.$order->id)}}" target="_blank" class="btn btn-outline-primary">views</button>
                             </td>
                         </tr>
+                            
+                        @endforeach
+                       
                        {{Form::hidden('',$increment =$increment+1)}}
                       </tbody>
                     </table>

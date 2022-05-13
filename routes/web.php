@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\pdfController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,3 +65,5 @@ Route::get('/edit_slider/{id}',[SliderController::class,'edit_slider']);
 Route::get('/delete_slider/{id}',[SliderController::class,'delete_slider']);
 Route::get('/activer_slider/{id}',[SliderController::class,'activer_slider']);
 Route::get('/desactiver_slider/{id}',[SliderController::class,'desactiver_slider']);
+
+Route::get('/voir_pdf/{id}',[pdfController::class,'voir_pdf']);
