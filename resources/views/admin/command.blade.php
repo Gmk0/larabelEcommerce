@@ -4,7 +4,7 @@
 @endsection
 
 @section('contenu')
-
+  {{Form::hidden('',$increment =1)}}
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Data table</h4>
@@ -29,19 +29,22 @@
                         @endforeach
                         <tr>
                             <td>{{$increment}}</td>
-                            <td>{{$orders->nom }}</td>
-                            <td>oshwe</td>
-                            <td>legume</td>
-                            <td>500fghf</td>
+                            <td>{{$order->nom }}</td>
+                            <td>{{$order->adresse }}</td>
+                            <td>
+                              @foreach ($order->panier->items as $item)
+                                   {{$item['product_name'].', ' }}
+                              @endforeach
+                             </td>
+                            <td>{{$order->payement_id }}</td>
                             <td>
                               <label class="badge badge-info">On hold</label>
                             </td>
                             <td>
                               <button class="btn btn-outline-primary">Edit</button>
-                              <button class="btn btn-outline-danger">Delete</button>
                             </td>
                         </tr>
-                       
+                       {{Form::hidden('',$increment =$increment+1)}}
                       </tbody>
                     </table>
                   </div>

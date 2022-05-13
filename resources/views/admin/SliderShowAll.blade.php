@@ -41,7 +41,7 @@
                                 <td><label class="badge badge-warning">Desactiver</label></td>
                             @endif
                             <td>
-                              <a href="{{URL::to('/edit_slider/'.$slider->id)}}" class="btn btn-outline-primary">Edit</a>
+                              <a href="{{URL::to('/edit_ slider/'.$slider->id)}}" class="btn btn-outline-primary">Edit</a>
                               <a href="{{URL::to('/delete_slider/'.$slider->id)}}" id="delete" class="btn btn-outline-danger">Delete</a>
                               @if ($slider->status==1)
                                  <a href="{{URL::to('/desactiver_slider/'.$slider->id)}}" id="" class="btn btn-outline-warning">Desactiver</a> 

@@ -14,6 +14,14 @@ class AdminController extends Controller
     }
      public function commandes(){
          $orders= Order::get();
-        return view('admin.command')->with('orders',$orders);
+         $orders->transform(function($order, $key){
+             $order->panier = unserialize($order->panier);
+             return $order;
+        });
+        
+        
+
+         return view('admin.command')->with('orders',$orders);
+         
     }
 }
