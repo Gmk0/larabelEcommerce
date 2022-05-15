@@ -64,7 +64,16 @@
 	          
 	          <li class="nav-item cta cta-colored"><a href="{{URL::to('/cart')}}" class="nav-link"><span class="icon-shopping_cart"></span>[{{Session::has('cart')? Session::get('cart')->totalQty:0}}]</a></li>
 
+           @if (Session::has('client'))
+               <li class="nav-item active"><a href="{{URL::to('/logout')}}" class="nav-link">Logout</a></li>
+               <li class="nav-item active"><a href="{{URL::to('/')}}" class="nav-link">{{Session::get('client')->name;}}</a></li>
+           @else
+               <li class="nav-item active"><a href="{{URL::to('/client_login')}}" class="nav-link">Login</a></li>
+           @endif 
+
+        
 	        </ul>
+
 	      </div>
 	    </div>
 	  </nav>

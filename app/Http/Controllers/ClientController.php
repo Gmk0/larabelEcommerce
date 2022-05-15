@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Client;
 use App\Models\Order;
 use App\Cart;
 use Session;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 use Stripe\Charge;
 use Stripe\Stripe;
 
@@ -34,8 +36,8 @@ class ClientController extends Controller
         
     }
       public function checkout(){
-          if(!Session::has('cart')){
-            return view('Client.cart');
+          if(!Session::has('client')){
+            return view('Client.login');
         }else{
                  return view('Client.checkout');
         };
@@ -153,4 +155,52 @@ class ClientController extends Controller
      public function signup(){
         return view('Client.signup');
     }
+
+
+    public function createCompte(Request $request){
+
+        $this->Validate($request,['name'=>'required|unique:clients',
+                                    'email'=>'email|required|unique:clients',
+                                    'password'=>'required|min:4']);
+        $client = new Client();
+        $client->name=$request->input('name');
+        $client->password =bcrypt($request->input('password'));
+        $client->email =$request->input('email');
+        $client->save();
+        return back()->with('status','Votre compte a été créé avec succes');
+    }
+
+    
+    public function accederCompte(Request $request){
+
+        $this->Validate($request,['name'=>'required',
+                                    'password'=>'required']);
+
+        $client = Client::where('name',$request->input('name'))->first();
+
+        if ($client) {
+
+            if (Hash::check($request->input('password'), $client->password)) {
+                Session::put('client',$client);
+                return redirect('/shop');
+            } else 
+            {
+                # code...
+                return back()->with('status','mot de passe incorrect');
+            }
+            
+            
+        } else {
+            # code...
+              return back()->with('status',"ce nom d'utilisateur n'existe pas");
+        }
+        
+        return back()->with('status','Votre compte a été créé avec succes');
+    }
+
+    public function logout(){
+        Session::forget('client');
+        return back();
+    }   
+    
 }

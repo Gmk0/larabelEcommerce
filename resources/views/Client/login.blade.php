@@ -32,7 +32,35 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('frontend/login/images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+
+					 @if (Session::has('status'))
+                      <div class="alert alert-danger" role="alert" >
+                             <button type="button" class="close primary" data-dismiss="alert" aria-label="close">
+                              <span aria-label="true">&times;</span>
+                      </button>
+                              <p> {{Session::get('status')}}</p>
+                           {{---Session::put('message',null)---}}
+                       </div>
+                    
+                      
+                  @endif
+
+				 @if (count($errors)>0)
+                       <div class="alert alert-danger" role="alert" >
+                             <button type="button" class="close btn-primary" data-dismiss="alert" aria-label="close">
+                              <span aria-label="true">&times;</span>
+                      </button>
+                              <ul>
+                                @foreach ($errors->all() as $error)
+                                   <li>{{$error}}</li> 
+                                @endforeach
+                              </ul>
+                           {{---Session::put('message',null)---}}
+                       </div>
+                          
+                  @endif
+				<form class="login100-form validate-form" action="{{URL::to('/accederCompte')}}" method="POST">
+					{{csrf_field() }}
 					<a href="{{URL::to('/')}}">
                         <span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
@@ -44,12 +72,12 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						<input class="input100" type="text" name="name" placeholder="Username">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
@@ -61,7 +89,7 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit">
 							Login
 						</button>
 					</div>

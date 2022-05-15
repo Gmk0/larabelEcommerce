@@ -34,7 +34,9 @@ Route::get('/add_cart/{id}',[ClientController::class,'add_cart']);
 Route::post('/update_qty/{id}',[ClientController::class,'update_qty']);
 Route::get('/remove_item/{id}',[ClientController::class,'remove_item']);
 Route::post('/payement',[ClientController::class,'payement']);
-
+Route::post('/createCompte',[ClientController::class,'createCompte']);
+Route::post('/accederCompte',[ClientController::class,'accederCompte']);
+Route::get('/logout',[ClientController::class,'logout']);
 
 Route::get('/admin',[AdminController::class,'dashboard']);
 Route::get('/commandes',[AdminController::class,'commandes']);
