@@ -11,7 +11,9 @@ use App\Models\Order;
 use App\Cart;
 use Session;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\sendMail;
 use Stripe\Charge;
 use Stripe\Stripe;
 
@@ -74,6 +76,15 @@ class ClientController extends Controller
             $order->panier=serialize($cart);
             $order->payement_id=$charge->id;
             $order->save();
+
+             $orders = Order::where('payement_id',$charge->id)->get();
+            $orders->transform(function($order, $key){
+             $order->panier = unserialize($order->panier);
+             return $order;
+              });
+
+            $email = Session::get('client')->email;
+             Mail::to($email)->send(new sendMail($orders));
 
           
 
