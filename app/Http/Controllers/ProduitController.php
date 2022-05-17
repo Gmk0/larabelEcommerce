@@ -10,6 +10,10 @@ use App\Models\Product;
 class ProduitController extends Controller
 {
     //
+        public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function ajoutProduit(){
          $categorie = Category::All()->pluck('category_name','category_name');

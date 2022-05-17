@@ -8,6 +8,11 @@ use App\Models\Slider;
 class SliderController extends Controller
 {
     //
+
+        public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function ajoutSlider(){
         return view('admin.ajouterSlider');
     }
