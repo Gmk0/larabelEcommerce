@@ -69,3 +69,11 @@ Route::get('/activer_slider/{id}',[SliderController::class,'activer_slider']);
 Route::get('/desactiver_slider/{id}',[SliderController::class,'desactiver_slider']);
 
 Route::get('/voir_pdf/{id}',[pdfController::class,'voir_pdf']);
+
+Auth::routes();
+
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
